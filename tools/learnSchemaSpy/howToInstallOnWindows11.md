@@ -1,8 +1,8 @@
 # Installing SchemaSpy on Windows 11
 
 ## Prerequisites
-* Postgres Installation
 * Java Installation
+* Postgres Installation
 
 ## Version Note
 If installing version 5 or lower, a JavaScript library (viz.js or Graphviz are recommended) is necessary for graphical rendering of the schema map.
@@ -18,7 +18,7 @@ In version 6 and higher, viz.js is included in the package, _however_ you **must
 * Navigate to the SchemaSpy [Releases](https://github.com/schemaspy/schemaspy/releases) page and download the most recent release.
 * Move the **schemaspy-#.#.#.jar** to /tools/SchemaSpy
 
-## Step 3 - Create a Config File for Each Database
+## Step 3 - Create a Config File for Each Schema
 * In the */tools/SchemaSpy* directory, create a config file for a database and schema (ex. "main.yaml")
   * For extensibility, create a config file for each schema
   * *Note: no naming syntax for config file is required, I simply chose .yaml to help the editor recognize the syntax*
