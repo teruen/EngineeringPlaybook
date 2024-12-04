@@ -47,7 +47,7 @@ schemaspy.s=main
 `java -jar schemaspy-6.2.4.jar -vizjs -configFile main.yaml
   `
 
-## Step 5 - Create batch scripts 2
+## Step 5 - Create batch scripts 3
 * Create a batch file for each schema based upon the command from Step 4 including the fully qualified paths
 ### schema-spy-main.bat
 ```
