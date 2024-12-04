@@ -1,7 +1,7 @@
 # Installing SchemaSpy on Windows 11
 
 ## Prerequisites
-* PostGres Installation
+* Postgres Installation
 * Java Installation
 
 ## Version Note
@@ -51,15 +51,20 @@ schemaspy.s=main
 * Create a batch file for each schema based upon the command from Step 4 including the fully qualified paths
 ### schema-spy-main.bat
 ```
-java -jar schemaspy-6.2.4.jar -vizjs -configFile /tools/SchemaSpy/main.yaml
+java -jar C:/tools/SchemaSpy/schemaspy-6.2.4.jar -vizjs -configFile C:/tools/SchemaSpy/main.yaml
 ```
-* Create another batch file in C:/scripts that references each schema's batch file
+* Create another batch file in *C:/scripts* that references each schema's batch file
 ### schema-spy.bat
 ```
 call C:/tools/SchemaSpy/schema-spy-main.bat
 call C:/tools/SchemaSpy/schema-spy-secondary.bat
 ```
-* If scripts is on the Path, you can now simply type `schema-spy` from the command line to regenerate your ER diagrams
+* If /scripts is on the Path, you can now simply type `schema-spy` from the command line to regenerate your ER diagrams
 
 ## Step 6 - Bookmark generated schemas
 * In your browser, navigate to _/tools/SchemaSpy/output/[SCHEMA_NAME]/index.html_ to view the generated reports and bookmark them
+
+## References
+* https://github.com/traderres/webClass/blob/master/learnSchemaSpy/howToInstallSchemaSpyForPostgresWithoutAdmin.txt
+* https://schemaspy.readthedocs.io/en/latest/installation.html
+* http://www.goring.org/resources/schemaspy_tutorial.html
