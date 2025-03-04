@@ -1,0 +1,41 @@
+    // Validate the file type by looking at the "magic bytes", a signature that appears at the beginning of the file.
+    // Even if a file has the proper extension it may have been renamed, so this will ensure that it is the correct type.
+    public async validateFileType(file: File): Promise<number | null> {
+
+      try {
+
+        // Read the file as an ArrayBuffer (first few bytes)
+        const buffer: ArrayBuffer = await this.readFileAsArrayBuffer(file);
+
+        // Convert the ArrayBuffer into a typed array to work with individual bytes
+        const bytes: Uint8Array = new Uint8Array(buffer);
+
+        // Convert the first few bytes into hexadecimal string for comparison
+        const hex: string = Array.from(bytes)
+          .map((b: number) => b.toString(16).padStart(2, "0")) // Ensure two-digit hex representation
+          .join(""); // Combine all hex values into a single string
+
+        // Iterate through each allowed MIME type
+        for (const mimeType of this.allowedMimeTypes) {
+
+          // Iterate through each magic byte signature associated with this MIME type
+          for (const byte of mimeType.magic_bytes) {
+
+            // If the file's hex signature starts with a known magic byte, return true immediately
+            if (hex.startsWith(byte)) {
+
+              return mimeType.id;
+            }
+          }
+        }
+
+        return null; // No valid file type found in for loop
+
+      } catch (error) {
+
+        // Default to invalid in case of error
+        console.error("Error validating file type:", error);
+        return null;
+
+      }
+    }
